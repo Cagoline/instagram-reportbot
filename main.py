@@ -39,14 +39,18 @@ sleep = args.sleep
 report = args.report
 amount = args.amount
 
+print("Adding new report types soon.")
 
 if username == "":
+    print("Your account username.")
     username = input("Username: ")
 
 if password == "":
+    print("Your account password.")
     password = input("Password: ")
 
 if sleep == "":
+    print("Please use an integer. \n For stability, please use 2 or more. \n For speed, use 1.")
     sleep = int(input("Sleep Delay: "))
 
 if bot == "":
@@ -62,7 +66,7 @@ if amount == "":
     print("Please use an integer.")
     amount = int(input("How many times do you want it to report: "))
 
-version = '1.2.3'
+version = '1.2.5'
 
 driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
 driver.get("https://www.instagram.com/accounts/login/")
@@ -94,72 +98,57 @@ driver.find_element(By.XPATH, '/html/body/div[1]/section/nav/div[2]/div/div/div[
                               '1]/a/div/div[2]/div[1]/div/div').click()
 time.sleep(sleep)
 
-# reporting the account
-if amount <= 1:
+x = 1
+
+# looping the reports
+for integer in range(amount):
     if report == 1:
         time.sleep(sleep)
-        driver.find_element(By.CSS_SELECTOR, 'button.b5k4S:nth-child(1) > div:nth-child(1) > div:nth-child(1)').click()
+        # three dots
+        driver.find_element(By.CSS_SELECTOR,
+                            '.VMs3J > button:nth-child(1) > div:nth-child(1) > svg:nth-child(1)').click()
         time.sleep(sleep)
+        driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/button[3]').click()
+        time.sleep(sleep)
+        driver.find_element(By.XPATH,
+                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[2]/div').click()
+        time.sleep(sleep)
+        driver.find_element(By.XPATH,
+                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
+        time.sleep(sleep)
+        driver.find_element(By.XPATH,
+                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
+        time.sleep(1)
         driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/div/div/div[4]/button').click()
-        print(f"Reported {username} with Spamming.")
+        time.sleep(sleep)
+        print(f"Reported {bot} with Spamming. Reported {x} times.")
+        x += 1
     elif report == 2:
         time.sleep(sleep)
-        driver.find_element(By.CSS_SELECTOR, 'button.b5k4S:nth-child(3) > div:nth-child(1) > div:nth-child(1)').click()
+        # three dots
+        driver.find_element(By.CSS_SELECTOR,
+                            '.VMs3J > button:nth-child(1) > div:nth-child(1) > svg:nth-child(1)').click()
+        time.sleep(sleep)
+        driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/button[3]').click()
+        time.sleep(sleep)
+        driver.find_element(By.XPATH,
+                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[2]/div').click()
+        time.sleep(sleep)
+        driver.find_element(By.XPATH,
+                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
+        time.sleep(sleep)
+        driver.find_element(By.XPATH,
+                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[3]/div/div[1]').click()
         time.sleep(1)
-        driver.find_element(By.CSS_SELECTOR, 'button.sqdOP:nth-child(5)').click()
+        driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/div/div/button').click()
         time.sleep(sleep)
         driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/div/div/div[4]/button').click()
-        print(f"Reported {username} with Self Injury.")
+        time.sleep(sleep)
+        print(f"Reported {bot} with Self Injury. Reported {x} times.")
+        x += 1
     else:
         print("Your report number did not equal 1 or 2.")
         driver.close()
 
-# looping the reports
-if amount >= 2:
-    for integer in range(amount):
-        if report == 1:
-            time.sleep(sleep)
-            driver.find_element(By.CSS_SELECTOR,
-                                '.VMs3J > button:nth-child(1) > div:nth-child(1) > svg:nth-child(1)').click()
-            time.sleep(sleep)
-            driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/button[3]').click()
-            time.sleep(sleep)
-            driver.find_element(By.XPATH,
-                                '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[2]/div').click()
-            time.sleep(sleep)
-            driver.find_element(By.XPATH,
-                                '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
-            time.sleep(sleep)
-            driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').\
-                click()
-            time.sleep(1)
-            driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/div/div/div[4]/button').click()
-            time.sleep(sleep)
-            print(f"Reported {username} with Spamming. Reported {amount} times.")
-        elif report == 2:
-            time.sleep(sleep)
-            driver.find_element(By.CSS_SELECTOR,
-                                '.VMs3J > button:nth-child(1) > div:nth-child(1) > svg:nth-child(1)').click()
-            time.sleep(sleep)
-            driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/button[3]').click()
-            time.sleep(sleep)
-            driver.find_element(By.XPATH,
-                                '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[2]/div').click()
-            time.sleep(sleep)
-            driver.find_element(By.XPATH,
-                                '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
-            time.sleep(sleep)
-            driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[3]/div/div[1]').\
-                click()
-            time.sleep(1)
-            driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/div/div/button').click()
-            time.sleep(sleep)
-            driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/div/div/div[4]/button').click()
-            time.sleep(sleep)
-            print(f"Reported {username} with Self Injury. Reported {amount} times.")
-        else:
-            print("Your report number did not equal 1 or 2.")
-            driver.close()
-
 driver.close()
-print(f"Created by Abaios under the MIT Public License. Instagram Report Bot version {version}.")
+print(f"Created by Ronen under the MIT Public License. Instagram Report Bot version {version}.")
