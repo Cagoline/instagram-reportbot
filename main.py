@@ -10,6 +10,7 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
+from selenium.common.exceptions import NoSuchElementException
 
 
 # To parse the arguments
@@ -67,7 +68,6 @@ if amount == "":
     amount = int(input("How many times do you want it to report: "))
 
 version = '1.2.5'
-
 driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
 driver.get("https://www.instagram.com/accounts/login/")
 driver.maximize_window()
@@ -87,6 +87,26 @@ for character in password:
 # log in button
 driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[3]/button').click()
 print(f"Logged in at {datetime.datetime.now()}")
+time.sleep(sleep)
+# looking for the save now button, then pressing not now
+driver.implicitly_wait(30)
+
+
+def check_exists_by_xpath():
+    try:
+        driver.find_element(By.XPATH, '/html/body/div[1]/section/main/div/div/div/div/button')
+    except NoSuchElementException:
+        return False
+    return True
+
+
+driver.implicitly_wait(30)
+if check_exists_by_xpath() is True:
+    print("Not Now button has been found.")
+    driver.find_element(By.XPATH, '/html/body/div[1]/section/main/div/div/div/div/button').click()
+else:
+    print("Not Now button doesn't exist.")
+
 # not now button
 time.sleep(3)
 driver.find_element(By.CSS_SELECTOR, 'button.aOOlW:nth-child(2)').click()
@@ -98,6 +118,7 @@ driver.find_element(By.XPATH, '/html/body/div[1]/section/nav/div[2]/div/div/div[
                               '1]/a/div/div[2]/div[1]/div/div').click()
 time.sleep(sleep)
 
+# to count how many times the bot loops
 x = 1
 
 # looping the reports
@@ -113,8 +134,10 @@ for integer in range(amount):
         driver.find_element(By.XPATH,
                             '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[2]/div').click()
         time.sleep(sleep)
-        driver.find_element(By.XPATH,
-                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
+        # the button for it's posting content that shouldn't be on instagram
+        driver.find_element(By.CSS_SELECTOR, 'body > div.RnEpo.Yx5HN > div > div > div > div.jIHp4 > div > div > div '
+                                             '> div.J09pf > button:nth-child(1) > div > '
+                                             'div.qF0y9.Igw0E.IwRSH.eGOV_.acqo5.vwCYk').click()
         time.sleep(sleep)
         driver.find_element(By.XPATH,
                             '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
@@ -134,8 +157,10 @@ for integer in range(amount):
         driver.find_element(By.XPATH,
                             '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[2]/div').click()
         time.sleep(sleep)
-        driver.find_element(By.XPATH,
-                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
+        # the button for it's posting content that shouldn't be on instagram
+        driver.find_element(By.CSS_SELECTOR, 'body > div.RnEpo.Yx5HN > div > div > div > div.jIHp4 > div > div > div '
+                                             '> div.J09pf > button:nth-child(1) > div > '
+                                             'div.qF0y9.Igw0E.IwRSH.eGOV_.acqo5.vwCYk').click()
         time.sleep(sleep)
         driver.find_element(By.XPATH,
                             '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[3]/div/div[1]').click()
@@ -143,7 +168,6 @@ for integer in range(amount):
         driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/div/div/button').click()
         time.sleep(sleep)
         driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/div/div/div[4]/button').click()
-        time.sleep(sleep)
         print(f"Reported {bot} with Self Injury. Reported {x} times.")
         x += 1
     else:
@@ -151,4 +175,4 @@ for integer in range(amount):
         driver.close()
 
 driver.close()
-print(f"Created by Ronen under the MIT Public License. Instagram Report Bot version {version}.")
+print(f"Created by Apollo#4115. Instagram Report Bot version {version}.")
