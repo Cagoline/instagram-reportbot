@@ -58,10 +58,10 @@ if bot == "":
     print("Please use @ before the username!")
     bot = input("The person you want to report: ")
 
-if report == "":
-    print("1 = Spam \n"
-          "2 = Self Injury")
-    report = int(input("Choose the type of report: "))
+# if report == "":
+#    print("1 = Spam \n"
+#          "2 = Self Injury")
+#    report = int(input("Choose the type of report: "))
 
 if amount == "":
     print("Please use an integer.")
@@ -100,12 +100,12 @@ def check_exists_by_xpath():
     return True
 
 
-driver.implicitly_wait(30)
+# save info
+time.sleep(sleep)
 if check_exists_by_xpath() is True:
-    print("Not Now button has been found.")
     driver.find_element(By.XPATH, '/html/body/div[1]/section/main/div/div/div/div/button').click()
 else:
-    print("Not Now button doesn't exist.")
+    pass
 
 # not now button
 time.sleep(3)
@@ -123,56 +123,32 @@ x = 1
 
 # looping the reports
 for integer in range(amount):
-    if report == 1:
-        time.sleep(sleep)
-        # three dots
-        driver.find_element(By.CSS_SELECTOR,
-                            '.VMs3J > button:nth-child(1) > div:nth-child(1) > svg:nth-child(1)').click()
-        time.sleep(sleep)
-        driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/button[3]').click()
-        time.sleep(sleep)
-        driver.find_element(By.XPATH,
-                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[2]/div').click()
-        time.sleep(sleep)
-        # the button for it's posting content that shouldn't be on instagram
-        driver.find_element(By.CSS_SELECTOR, 'body > div.RnEpo.Yx5HN > div > div > div > div.jIHp4 > div > div > div '
-                                             '> div.J09pf > button:nth-child(1) > div > '
-                                             'div.qF0y9.Igw0E.IwRSH.eGOV_.acqo5.vwCYk').click()
-        time.sleep(sleep)
-        driver.find_element(By.XPATH,
-                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
-        time.sleep(1)
-        driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/div/div/div[4]/button').click()
-        time.sleep(sleep)
-        print(f"Reported {bot} with Spamming. Reported {x} times.")
-        x += 1
-    elif report == 2:
-        time.sleep(sleep)
-        # three dots
-        driver.find_element(By.CSS_SELECTOR,
-                            '.VMs3J > button:nth-child(1) > div:nth-child(1) > svg:nth-child(1)').click()
-        time.sleep(sleep)
-        driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/button[3]').click()
-        time.sleep(sleep)
-        driver.find_element(By.XPATH,
-                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[2]/div').click()
-        time.sleep(sleep)
-        # the button for it's posting content that shouldn't be on instagram
-        driver.find_element(By.CSS_SELECTOR, 'body > div.RnEpo.Yx5HN > div > div > div > div.jIHp4 > div > div > div '
-                                             '> div.J09pf > button:nth-child(1) > div > '
-                                             'div.qF0y9.Igw0E.IwRSH.eGOV_.acqo5.vwCYk').click()
-        time.sleep(sleep)
-        driver.find_element(By.XPATH,
-                            '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[3]/div/div[1]').click()
-        time.sleep(1)
-        driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/div/div/button').click()
-        time.sleep(sleep)
-        driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/div/div/div[4]/button').click()
-        print(f"Reported {bot} with Self Injury. Reported {x} times.")
-        x += 1
-    else:
-        print("Your report number did not equal 1 or 2.")
-        driver.close()
+    #    if report == 1:
+    time.sleep(sleep)
+    # three dots
+    driver.find_element(By.CSS_SELECTOR,
+                        '.VMs3J > button:nth-child(1) > div:nth-child(1) > svg:nth-child(1)').click()
+    time.sleep(sleep)
+    driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/button[3]').click()
+    time.sleep(sleep)
+    driver.find_element(By.XPATH,
+                        '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[2]/div').click()
+    time.sleep(sleep)
+    # the button for it's posting content that shouldn't be on instagram
+    driver.find_element(By.CSS_SELECTOR, 'body > div.RnEpo.Yx5HN > div > div > div > div.jIHp4 > div > div > div '
+                                         '> div.J09pf > button:nth-child(1) > div > '
+                                         'div.qF0y9.Igw0E.IwRSH.eGOV_.acqo5.vwCYk').click()
+    time.sleep(sleep)
+    driver.find_element(By.XPATH,
+                        '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
+    time.sleep(1)
+    driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/div/div/div[4]/button').click()
+    time.sleep(sleep)
+    print(f"Reported {bot} with Spamming. Reported {x} times.")
+    x += 1
+# else:
+#    print("Your report number did not equal 1")
+#    driver.close()
 
 driver.close()
 print(f"Created by Apollo#4115. Instagram Report Bot version {version}.")
