@@ -91,22 +91,6 @@ time.sleep(sleep)
 # looking for the save now button, then pressing not now
 driver.implicitly_wait(30)
 
-
-def check_exists_by_xpath():
-    try:
-        driver.find_element(By.XPATH, '/html/body/div[1]/section/main/div/div/div/div/button')
-    except NoSuchElementException:
-        return False
-    return True
-
-
-# save info
-time.sleep(sleep)
-if check_exists_by_xpath() is True:
-    driver.find_element(By.XPATH, '/html/body/div[1]/section/main/div/div/div/div/button').click()
-else:
-    pass
-
 # not now button
 time.sleep(3)
 driver.find_element(By.CSS_SELECTOR, 'button.aOOlW:nth-child(2)').click()
