@@ -85,6 +85,7 @@ for character in password:
     time.sleep(0.05)
 
 # log in button
+driver.implicitly_wait(30)
 driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[3]/button').click()
 print(f"Logged in at {datetime.datetime.now()}")
 time.sleep(sleep)
@@ -110,22 +111,28 @@ for integer in range(amount):
     #    if report == 1:
     time.sleep(sleep)
     # three dots
+    driver.implicitly_wait(30)
     driver.find_element(By.CSS_SELECTOR,
                         '.VMs3J > button:nth-child(1) > div:nth-child(1) > svg:nth-child(1)').click()
     time.sleep(sleep)
+    driver.implicitly_wait(30)
     driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/button[3]').click()
     time.sleep(sleep)
+    driver.implicitly_wait(30)
     driver.find_element(By.XPATH,
                         '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[2]/div').click()
     time.sleep(sleep)
+    driver.implicitly_wait(30)
     # the button for it's posting content that shouldn't be on instagram
     driver.find_element(By.CSS_SELECTOR, 'body > div.RnEpo.Yx5HN > div > div > div > div.jIHp4 > div > div > div '
                                          '> div.J09pf > button:nth-child(1) > div > '
                                          'div.qF0y9.Igw0E.IwRSH.eGOV_.acqo5.vwCYk').click()
     time.sleep(sleep)
+    driver.implicitly_wait(30)
     driver.find_element(By.XPATH,
                         '/html/body/div[6]/div/div/div/div[2]/div/div/div/div[3]/button[1]/div/div[1]').click()
     time.sleep(1)
+    driver.implicitly_wait(30)
     driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div/div/div/div[4]/button').click()
     time.sleep(sleep)
     print(f"Reported {bot} with Spamming. Reported {x} times.")
