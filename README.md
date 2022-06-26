@@ -28,5 +28,3 @@ Type in how long you want the bot to pause between actions. </br>
 Type in the username of the person you want to report. </br>
 Type in the type of report (more coming soon!). </br>
 Type in how many times you want it to report. </br>
-
-## You are allowed to make modifications to the script but you must give credit.
