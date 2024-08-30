@@ -142,4 +142,4 @@ for integer in range(amount):
 #    driver.close()
 
 driver.close()
-print(f"Created by Apollo#4115. Instagram Report Bot version {version}.")
+print(f"Created by Ronen. Instagram Report Bot version {version}.")
